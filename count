@@ -1,0 +1,58 @@
+```java
+import java.util.Random;
+import java.util.Scanner;
+
+public class ArithmeticGenerator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("请输入要生成的题目数量：");
+        int num = scanner.nextInt();
+
+        System.out.println("请选择运算符（+、-、*、/）：");
+        char operator = scanner.next().charAt(0);
+
+        System.out.println("请输入最大数：");
+        int maxNum = scanner.nextInt();
+
+        System.out.println("是否有括号（Y/N）：");
+        boolean hasBracket = scanner.next().equalsIgnoreCase("Y");
+
+        System.out.println("是否有小数（Y/N）：");
+        boolean hasDecimal = scanner.next().equalsIgnoreCase("Y");
+
+        for (int i = 0; i < num; i++) {
+            int num1 = new Random().nextInt(maxNum) + 1;
+            int num2 = new Random().nextInt(maxNum) + 1;
+
+            if (hasDecimal) {
+                double result = 0;
+                switch (operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        result = (double) num1 / num2;
+                        break;
+                }
+                System.out.println(num1 + " " + operator + " " + num2 + " = " + result);
+            } else {
+                if (hasBracket) {
+                    System.out.println("(" + num1 + " " + operator + " " + num2 + ") = ");
+                } else {
+                    System.out.println(num1 + " " + operator + " " + num2 + " = ");
+                }
+            }
+        }
+    }
+}
+```
+
+这段代码实现了一个简单的四则运算自动生成程序，根据用户输入的设置生成指定数量的题目，并根据用户选择的运算符、最大数、是否有括号、是否有小数等条件生成题目。用户可以通过控制台输入来设置各项参数。
